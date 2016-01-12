@@ -17,9 +17,15 @@ private:
 	bool IsStatic;
 
 public:
-	void Update(Vector2D<float> a_fPos, float a_fRadius);
+	void Update(const Vector2D<float> & a_fPos, const float a_fRadius);
 
-	BoundingCircle(Vector2D<float> a_fPos, float a_fRadius, bool IsStatic);
+	void OnCollision(const BoundingCircle & a_oOtherBC);
+
+	const Vector2D<float> & GetPos();
+	const float GetRadius();
+	const bool GetIsStatic();
+
+	BoundingCircle(const Vector2D<float> & a_fPos, const float a_fRadius, const bool IsStatic);
 	BoundingCircle();
 
 	~BoundingCircle();
