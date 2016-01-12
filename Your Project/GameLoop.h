@@ -34,7 +34,7 @@ class GameLoop : private EventHandler
 private:
 	std::vector<Player*> VectorPlayer;
 	std::vector<Pellet*> VectorPellet;
-
+	System::Point2D<float> Test;
 	Vector2D<float> fMousePos;
 
 	bool m_bRunning; // If this is true, the game loop will continue to run
