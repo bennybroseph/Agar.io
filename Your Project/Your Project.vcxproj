@@ -128,7 +128,11 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="GameLoop.h" />
+    <ClInclude Include="Maths.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Vector3D.h" />
+    <ClInclude Include="Vector4D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoundingCircle.cpp" />
