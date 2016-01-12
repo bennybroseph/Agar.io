@@ -16,7 +16,7 @@ namespace Collision
 
 	void CheckCollisions();
 
-	BoundingCircle * NewBoundingCircle(Vector2D<float> a_fPos, float a_fRadius);
+	BoundingCircle * NewBoundingCircle(const Vector2D<float> & a_fPos, const float a_fRadius, const bool a_bIsStatic);
 
 	void Quit();
 };

@@ -24,6 +24,9 @@ public:
 	const T GetX() const;
 	const T GetY() const;
 
+	void SetX(const T a_X);
+	void SetY(const T a_Y);
+
 	void Print() const;
 
 	Vector2D(const T ac_X, const T ac_Y);
@@ -78,6 +81,17 @@ template <typename T>
 const T Vector2D<T>::GetY() const
 {
 	return y;
+}
+
+template <typename T>
+void Vector2D<T>::SetX(const T a_X)
+{
+	x = a_X
+}
+template <typename T>
+void Vector2D<T>::SetY(const T a_Y)
+{
+	y = a_Y
 }
 
 template <typename T>

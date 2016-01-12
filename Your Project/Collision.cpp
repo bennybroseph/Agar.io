@@ -14,13 +14,24 @@ namespace Collision
 	{
 		for (int i = 0; i < VectorBC.size(); i++)
 		{
-
+			for (int j = 0; j < VectorBC.size(); j++)
+			{
+				if (i != j && !VectorBC[i]->GetIsStatic())
+				{
+					if (sqrt(
+						pow(VectorBC[i]->GetPos().GetX() - VectorBC[j]->GetPos().GetX(), 2) +
+						pow(VectorBC[i]->GetPos().GetY() - VectorBC[j]->GetPos().GetY(), 2) < VectorBC[i]->GetRadius() + VectorBC[j]->GetRadius()))
+					{
+						VectorBC[i]->OnCollision(*VectorBC[j]);
+					}
+				}
+			}
 		}
 	}
 
-	BoundingCircle * NewBoundingCircle(Vector2D<float> a_fPos, float a_fRadius)
+	BoundingCircle * NewBoundingCircle(const Vector2D<float> & a_fPos, const float a_fRadius, const bool a_bIsStatic)
 	{
-		BoundingCircle * NewBC = new BoundingCircle(a_fPos, a_fRadius);
+		BoundingCircle * NewBC = new BoundingCircle(a_fPos, a_fRadius, a_bIsStatic);
 		VectorBC.push_back(NewBC);
 
 		return NewBC;
@@ -28,6 +39,6 @@ namespace Collision
 
 	void Quit()
 	{
-
+		VectorBC.clear();
 	}
 }
