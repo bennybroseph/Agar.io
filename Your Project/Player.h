@@ -14,7 +14,10 @@ class Player : public Cell
 private:
 	float speed;
 	Vector2D<float> Velocity;
+
 public:
+	void OnCollision();
+
 	void Split();
 	void Merge();
 	void Follow(Vector2D<float> &a);

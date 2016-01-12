@@ -5,7 +5,7 @@
 Pellet::Pellet() : Cell()
 {
 	Radius = 15;
-	BC = Collision::NewBoundingCircle(Pos, Radius, true);
+	BC = Collision::NewBoundingCircle(this, Pos, Radius, true);
 }
 
 
