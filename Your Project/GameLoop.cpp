@@ -18,6 +18,8 @@ void GameLoop::Loop()
 			// and its syntax
 			OnEvent(sdlEvent);
 		}
+		GetDeltaTime();
+
 		Update();
 
 		LateUpdate();
@@ -37,12 +39,28 @@ void GameLoop::LateUpdate()
 
 }
 
+void GameLoop::GetDeltaTime()
+{
+	int now = SDL_GetTicks();
+	DeltaTime = ((float)(now - last)) / 1000;
+	last = now;
+}
+
 void GameLoop::Draw()
 {
 	// Objects are drawn in a painter's layer fashion meaning the first object drawn is on the bottom, and the last one drawn is on the top
 	// just like a painter would paint onto a canvas
 
 	
+}
+
+void GameLoop::OnMouseMove(const int ac_iMouseX, const int ac_iMouseY, const int ac_iVelX, const int ac_VelY, const bool ac_bLeft, const bool ac_bRight, const bool ac_bMiddle)
+{
+	if ((Player1.x != ac_iMouseX) && (Player1.y != ac_iMouseY))
+	{
+		Player1.x += ((ac_iMouseX - 800) * DeltaTime);
+		Player1.y += ((ac_iMouseY - 450) * DeltaTime);
+	}
 }
 
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
@@ -52,7 +70,8 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 	{
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
 
-	default: printf("%s\n", SDL_GetKeyName(ac_sdlSym)); break;
+	default: 
+		break;
 	}
 }
 void GameLoop::OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)

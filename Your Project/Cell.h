@@ -10,7 +10,9 @@
 class Cell
 {
 private: 
-
+	Vector2D<float> Pos;
+	float Radius;
+	BoundingCircle* BC;
 public:
 	Cell();
 	~Cell();

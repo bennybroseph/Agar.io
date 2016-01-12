@@ -11,6 +11,7 @@
 
 #include "Graphics.h"
 #include "EventHandler.h"
+#include <iostream>
 
 // This is called inheritance
 // The GameLoop class inherits every member variable and function from 'EventHandler'
@@ -24,6 +25,9 @@ class GameLoop : private EventHandler
 {
 private:
 	bool m_bRunning; // If this is true, the game loop will continue to run
+
+	float DeltaTime = 0.0;
+	int last = 0;
 
 public:
 	// The game loop
@@ -43,6 +47,9 @@ public:
 	void OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode);
 	// Gets called automatically by 'EventHandler' when the user clicks the 'x' on the window
 	void OnExit();
+
+	//Gets the change in time.
+	void GetDeltaTime();
 
 	// The default constructor
 	GameLoop();
