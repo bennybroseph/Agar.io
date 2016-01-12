@@ -10,10 +10,20 @@ namespace Collision
 
 	}
 
+	void Update()
+	{
+		CheckCollisions();
+	}
+
 	void CheckCollisions()
 	{
 		for (int i = 0; i < VectorBC.size(); i++)
 		{
+			if (VectorBC[i]->GetShouldDelete())
+			{
+				VectorBC.erase(VectorBC.begin() + i);
+				continue;
+			}
 			for (int j = 0; j < VectorBC.size(); j++)
 			{
 				if (i != j && !VectorBC[i]->GetIsStatic())

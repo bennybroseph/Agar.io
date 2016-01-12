@@ -34,6 +34,7 @@ namespace Collision
 		const Vector2D<float> & GetPos();
 		const float GetRadius();
 		const bool GetIsStatic();
+		const bool GetShouldDelete();
 
 		BoundingCircle( Cell * a_oCell, const Vector2D<float> & a_fPos, const float a_fRadius, const bool IsStatic);
 		BoundingCircle();
@@ -43,6 +44,7 @@ namespace Collision
 
 	void Init();
 
+	void Update();
 	void CheckCollisions();
 
 	BoundingCircle * NewBoundingCircle( Cell * a_oCell, const Vector2D<float> & a_fPos, const float a_fRadius, const bool a_bIsStatic);

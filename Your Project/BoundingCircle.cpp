@@ -34,6 +34,11 @@ namespace Collision
 		return IsStatic;
 	}
 
+	const bool BoundingCircle::GetShouldDelete()
+	{
+		return ShouldDelete;
+	}
+
 	BoundingCircle::BoundingCircle(Cell * a_oCell, const Vector2D<float> & a_fPos, const float a_fRadius, const bool a_bIsStatic)
 	{
 		fPos = a_fPos;

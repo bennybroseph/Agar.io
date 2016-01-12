@@ -51,7 +51,7 @@ void GameLoop::Update()
 }
 void GameLoop::LateUpdate()
 {
-	Collision::CheckCollisions();
+	Collision::Update();
 }
 
 void GameLoop::Draw()
@@ -124,6 +124,7 @@ GameLoop::GameLoop()
 		Pellet * NewPellet = new Pellet();
 		VectorPellet.push_back(NewPellet);
 	}
+	Grid = Graphics::LoadSurface<float>("");
 
 	m_bRunning = true;
 }

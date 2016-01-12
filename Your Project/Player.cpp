@@ -2,7 +2,7 @@
 
 void Player::OnCollision()
 {
-	Radius++;
+	Radius += 3;
 }
 void Player::Follow(Vector2D<float> &a)
 {

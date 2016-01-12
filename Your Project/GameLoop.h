@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////
 // File: GameLoop.h
-// Author: Ben Odom
+// Author: Ben Odom and Austin Morrell
 // Brief: A short and simple game loop object which will allow
 //		  a base layout for how you should organize your game
 //		  functions. 
@@ -39,8 +39,7 @@ private:
 
 	bool m_bRunning; // If this is true, the game loop will continue to run
 
-	float DeltaTime = 0.0;
-	int last = 0;
+	Graphics::GLSurface<float>* Grid;
 
 public:
 	// The game loop
