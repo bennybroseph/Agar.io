@@ -12,7 +12,8 @@
 class Player : public Cell
 {
 private:
-
+	float speed;
+	Vector2D<float> Velocity;
 public:
 	void Split();
 	void Merge();
