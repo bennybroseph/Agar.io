@@ -32,7 +32,10 @@ void GameLoop::Loop()
 
 void GameLoop::Update()
 {
-
+	for (int i = 0; i < VectorPlayer.size(); i++)
+	{
+		VectorPlayer[i]->Update();
+	}
 }
 void GameLoop::LateUpdate()
 {
@@ -51,16 +54,21 @@ void GameLoop::Draw()
 	// Objects are drawn in a painter's layer fashion meaning the first object drawn is on the bottom, and the last one drawn is on the top
 	// just like a painter would paint onto a canvas
 
-	
+	for (int i = 0; i < VectorPlayer.size(); i++)
+	{
+		Graphics::DrawCircle({ VectorPlayer[i]->GetPos().GetX(), VectorPlayer[i]->GetPos().GetY() }, VectorPlayer[i]->GetRadius(), 25.0f, { 255, 255, 255, 255 });
+	}
 }
 
 void GameLoop::OnMouseMove(const int ac_iMouseX, const int ac_iMouseY, const int ac_iVelX, const int ac_VelY, const bool ac_bLeft, const bool ac_bRight, const bool ac_bMiddle)
 {
-	if ((Player1.Pos.GetX() != ac_iMouseX) && (Player1.y != ac_iMouseY))
+	for (int i = 0; i < VectorPlayer.size(); i++)
 	{
-		Player1.Pos.GetX() += ((ac_iMouseX - 800) * DeltaTime);
-		Player1.y += ((ac_iMouseY - 450) * DeltaTime);
-	}
+		if ((VectorPlayer[i]->GetPos().GetX() != ac_iMouseX) && (VectorPlayer[i]->GetPos().GetY() != ac_iMouseY))
+		{
+			VectorPlayer[i]->SetPos({ (ac_iMouseX - 800) * DeltaTime, (ac_iMouseY - 450) * DeltaTime });
+		}
+	}	
 }
 
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
@@ -88,6 +96,10 @@ void GameLoop::OnExit()
 
 GameLoop::GameLoop()
 {
+	Player * NewPlayer = new Player();
+
+	VectorPlayer.push_back(NewPlayer);
+
 	m_bRunning = true;
 }
 GameLoop::~GameLoop()

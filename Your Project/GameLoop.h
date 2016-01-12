@@ -14,6 +14,8 @@
 #include <iostream>
 #include "Player.h"
 
+#include <vector>
+
 // This is called inheritance
 // The GameLoop class inherits every member variable and function from 'EventHandler'
 // Think of it like a car. All trucks are cars, but not all cars are trucks.
@@ -25,7 +27,7 @@
 class GameLoop : private EventHandler
 {
 private:
-	Player Player1;
+	std::vector<Player*> VectorPlayer;
 
 	bool m_bRunning; // If this is true, the game loop will continue to run
 
