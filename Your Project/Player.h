@@ -1,0 +1,18 @@
+//////////////////////////////////////////////////////////////
+// File: GameLoop.h
+// Author: Ben Odom
+// Brief:  
+//////////////////////////////////////////////////////////////
+#ifndef _PLAYER_H_
+#define _PLAYER_H_
+
+#include "Cell.h"
+
+class Player : Cell
+{
+public:
+	Player();
+	~Player();
+};
+
+#endif _PLAYER_H_
