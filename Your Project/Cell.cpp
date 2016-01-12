@@ -37,7 +37,7 @@ Cell::Cell()
 {
 	Pos = Vector2D<float>((rand() % 1600 + 1), (rand() % 900 + 1));
 	Radius = 20;
-	BC = Collision::NewBoundingCircle(Pos, Radius);
+	BC = Collision::NewBoundingCircle(Pos, Radius, false);
 }
 
 
