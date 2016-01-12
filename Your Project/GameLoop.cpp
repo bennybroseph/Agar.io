@@ -56,9 +56,9 @@ void GameLoop::Draw()
 
 void GameLoop::OnMouseMove(const int ac_iMouseX, const int ac_iMouseY, const int ac_iVelX, const int ac_VelY, const bool ac_bLeft, const bool ac_bRight, const bool ac_bMiddle)
 {
-	if ((Player1.x != ac_iMouseX) && (Player1.y != ac_iMouseY))
+	if ((Player1.Pos.GetX() != ac_iMouseX) && (Player1.y != ac_iMouseY))
 	{
-		Player1.x += ((ac_iMouseX - 800) * DeltaTime);
+		Player1.Pos.GetX() += ((ac_iMouseX - 800) * DeltaTime);
 		Player1.y += ((ac_iMouseY - 450) * DeltaTime);
 	}
 }

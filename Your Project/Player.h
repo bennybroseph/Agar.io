@@ -8,9 +8,14 @@
 
 #include "Cell.h"
 
-class Player : Cell
+class Player : public Cell
 {
+private:
+
 public:
+	void Split();
+	void Merge();
+
 	Player();
 	~Player();
 };
