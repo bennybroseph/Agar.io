@@ -32,13 +32,18 @@ void GameLoop::Update()
 {
 	Time::Update();
 
-	for (int i = 0; i < VectorPlayer.size(); i++)
+	if (VectorPlayer.size() > 0)
 	{
-		VectorPlayer[i]->Update(fMousePos);
-	}
-	for (int i = 0; i < VectorPellet.size(); i++)
-	{
-		//VectorPellet[i].Get
+		Vector2D<float> MousePos = { (fMousePos.GetX() - 800) + VectorPlayer[0]->GetSystemPoint().X, (fMousePos.GetY() - 450) + VectorPlayer[0]->GetSystemPoint().Y };
+
+		for (int i = 0; i < VectorPlayer.size(); i++)
+		{
+			VectorPlayer[i]->Update(MousePos);
+		}
+		for (int i = 0; i < VectorPellet.size(); i++)
+		{
+			//VectorPellet[i].Get
+		}
 	}
 }
 void GameLoop::LateUpdate()
@@ -50,14 +55,19 @@ void GameLoop::Draw()
 {
 	// Objects are drawn in a painter's layer fashion meaning the first object drawn is on the bottom, and the last one drawn is on the top
 	// just like a painter would paint onto a canvas
+	if (VectorPlayer.size() > 0)
+	{
+		System::Point2D<float> fRelativePos = { VectorPlayer[0]->GetSystemPoint().X - 800, VectorPlayer[0]->GetSystemPoint().Y - 450 };
 
-	for (int i = 0; i < VectorPellet.size(); i++)
-	{
-		Graphics::DrawCircle(VectorPellet[i]->GetSystemPoint(), VectorPellet[i]->GetRadius(), 25.0f, VectorPellet[i]->GetSystemColor());
-	}
-	for (int i = 0; i < VectorPlayer.size(); i++)
-	{
-		Graphics::DrawCircle(VectorPlayer[i]->GetSystemPoint(), VectorPlayer[i]->GetRadius(), 25.0f, VectorPlayer[i]->GetSystemColor());
+
+		for (int i = 0; i < VectorPellet.size(); i++)
+		{
+			Graphics::DrawCircle(VectorPellet[i]->GetSystemPoint() - fRelativePos, VectorPellet[i]->GetRadius(), 25.0f, VectorPellet[i]->GetSystemColor());
+		}
+		for (int i = 0; i < VectorPlayer.size(); i++)
+		{
+			Graphics::DrawCircle(VectorPlayer[i]->GetSystemPoint() - fRelativePos, VectorPlayer[i]->GetRadius(), 25.0f, VectorPlayer[i]->GetSystemColor());
+		}
 	}
 }
 
@@ -80,7 +90,7 @@ void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, con
 	{
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
 
-	default: 
+	default:
 		break;
 	}
 }
@@ -110,7 +120,7 @@ GameLoop::GameLoop()
 	{
 		Pellet * NewPellet = new Pellet();
 		VectorPellet.push_back(NewPellet);
-	}	
+	}
 
 	m_bRunning = true;
 }
