@@ -1,6 +1,6 @@
 #include "Cell.h"
-#include <stdlib.h>
-#include "Collision.h"
+
+
 
 Cell::Cell(Vector2D<float> pos, float rad)
 {
@@ -8,36 +8,50 @@ Cell::Cell(Vector2D<float> pos, float rad)
 	Radius = rad;
 }
 
-Vector2D<float> Cell::GetPos()
+const Vector2D<float>& Cell::GetPos()
 {
 	return Pos;
 }
 
-float Cell::GetRadius()
+const Vector4D<float>& Cell::GetColor()
+{
+	return Color;
+}
+
+const float Cell::GetRadius()
 {
 	return Radius;
 }
 
-void Cell::SetPos(Vector2D<float> a)
+const System::Point2D<float> Cell::GetSystemPoint()
+{
+	return{ Pos.GetX(), Pos.GetY() };
+}
+
+const System::Color<float> Cell::GetSystemColor()
+{
+	return{ Color.GetX(), Color.GetY(), Color.GetZ(), Color.GetT() };
+}
+
+void Cell::SetPos(const Vector2D<float> & a)
 {
 	Pos = a;
 }
 
-void Cell::SetRadius(float b)
+void Cell::SetRadius(const float b)
 {
 	Radius = b;
 }
 
 void Cell::Update()
 {
-
+	BC->Update(Pos, Radius);
 }
 
 Cell::Cell()
 {
-	Pos = Vector2D<float>((rand() % 1600 + 1), (rand() % 900 + 1));
-	Radius = 20;
-	BC = Collision::NewBoundingCircle(Pos, Radius, false);
+	Pos = Vector2D<float>(rand() % 1600 + 1, rand() % 900 + 1);
+	Color = Vector4D<float>(rand() % 255 + 1, rand() % 255 + 1, rand() % 255 + 1, 255);
 }
 
 

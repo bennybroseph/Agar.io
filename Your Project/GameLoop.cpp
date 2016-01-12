@@ -1,6 +1,6 @@
 #include "GameLoop.h"
 
-
+const unsigned int MAX_PELLETS = 25;
 
 void GameLoop::Loop()
 {
@@ -18,8 +18,6 @@ void GameLoop::Loop()
 			// and its syntax
 			OnEvent(sdlEvent);
 		}
-		GetDeltaTime();
-
 		Update();
 
 		LateUpdate();
@@ -38,15 +36,14 @@ void GameLoop::Update()
 	{
 		VectorPlayer[i]->Update(fMousePos);
 	}
+	for (int i = 0; i < VectorPellet.size(); i++)
+	{
+		//VectorPellet[i].Get
+	}
 }
 void GameLoop::LateUpdate()
 {
-
-}
-
-void GameLoop::GetDeltaTime()
-{
-	
+	Collision::CheckCollisions();
 }
 
 void GameLoop::Draw()
@@ -54,9 +51,13 @@ void GameLoop::Draw()
 	// Objects are drawn in a painter's layer fashion meaning the first object drawn is on the bottom, and the last one drawn is on the top
 	// just like a painter would paint onto a canvas
 
+	for (int i = 0; i < VectorPellet.size(); i++)
+	{
+		Graphics::DrawCircle(VectorPellet[i]->GetSystemPoint(), VectorPellet[i]->GetRadius(), 25.0f, VectorPellet[i]->GetSystemColor());
+	}
 	for (int i = 0; i < VectorPlayer.size(); i++)
 	{
-		Graphics::DrawCircle({ VectorPlayer[i]->GetPos().GetX(), VectorPlayer[i]->GetPos().GetY() }, VectorPlayer[i]->GetRadius(), 25.0f, { 255, 255, 255, 255 });
+		Graphics::DrawCircle(VectorPlayer[i]->GetSystemPoint(), VectorPlayer[i]->GetRadius(), 25.0f, VectorPlayer[i]->GetSystemColor());
 	}
 }
 
@@ -100,9 +101,16 @@ GameLoop::GameLoop()
 	Time::Init();
 	Collision::Init();
 
-	Player * NewPlayer = new Player();
+	srand(time(NULL));
 
+	Player * NewPlayer = new Player();
 	VectorPlayer.push_back(NewPlayer);
+
+	for (int i = 0; i < MAX_PELLETS; i++)
+	{
+		Pellet * NewPellet = new Pellet();
+		VectorPellet.push_back(NewPellet);
+	}	
 
 	m_bRunning = true;
 }

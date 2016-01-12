@@ -12,6 +12,8 @@ void Player::Follow(Vector2D<float> &a)
 void Player::Update(Vector2D<float>& a)
 {
 	Follow(a);
+
+	Cell::Update();
 }
 
 void Player::Split()
@@ -24,8 +26,10 @@ void Player::Merge()
 
 }
 
-Player::Player()
+Player::Player() : Cell()
 {
+	Radius = 20;
+	BC = Collision::NewBoundingCircle(Pos, Radius, false);
 }
 
 
