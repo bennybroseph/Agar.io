@@ -8,8 +8,11 @@
 #define _CELL_H_
 
 #include "Collision.h"
+#include "Vector2D.h"
 #include "Vector4D.h"
 #include "System.h"
+
+#include <stdio.h>
 #include <stdlib.h>
 
 class Cell
@@ -20,13 +23,16 @@ protected:
 
 	float Radius;
 
-	BoundingCircle* BC;
+	Collision::BoundingCircle* BC;
 	bool ShouldDelete;
 
 public:
+	virtual void OnCollision();
+
 	const Vector2D<float>& GetPos();
 	const Vector4D<float>& GetColor();
 	const float GetRadius();
+	const bool GetShouldDelete();
 
 	const System::Point2D<float> GetSystemPoint();
 	const System::Color<float> GetSystemColor();

@@ -42,7 +42,10 @@ void GameLoop::Update()
 		}
 		for (int i = 0; i < VectorPellet.size(); i++)
 		{
-			//VectorPellet[i].Get
+			if (VectorPellet[i]->GetShouldDelete())
+			{
+				VectorPellet.erase(VectorPellet.begin() + i);
+			}
 		}
 	}
 }

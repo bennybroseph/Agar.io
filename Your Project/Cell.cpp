@@ -8,6 +8,17 @@ Cell::Cell(Vector2D<float> pos, float rad)
 	Radius = rad;
 }
 
+void Cell::OnCollision()
+{
+	BC->SetShouldDelete(true);
+	ShouldDelete = true;
+}
+
+const bool Cell::GetShouldDelete()
+{
+	return ShouldDelete;
+}
+
 const Vector2D<float>& Cell::GetPos()
 {
 	return Pos;
@@ -57,4 +68,5 @@ Cell::Cell()
 
 Cell::~Cell()
 {
+
 }
