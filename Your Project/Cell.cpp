@@ -13,17 +13,22 @@ Vector2D<float> Cell::GetPos()
 	return Pos;
 }
 
-float GetRadius()
+float Cell::GetRadius()
 {
-
+	return Radius;
 }
 
-void SetPos()
+void Cell::SetPos(Vector2D<float> a)
 {
-
+	Pos = a;
 }
 
-void SetRadius()
+void Cell::SetRadius(float b)
+{
+	Radius = b;
+}
+
+void Cell::Update()
 {
 
 }

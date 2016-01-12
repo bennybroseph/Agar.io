@@ -2,7 +2,6 @@
 
 void Split()
 {
-	Player Player2();
 
 }
 
