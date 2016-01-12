@@ -14,9 +14,12 @@
 #include "EventHandler.h"
 #include <iostream>
 #include "Player.h"
+#include "Pellet.h"
 #include "Collision.h"
 
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 
 // This is called inheritance
 // The GameLoop class inherits every member variable and function from 'EventHandler'
@@ -30,6 +33,7 @@ class GameLoop : private EventHandler
 {
 private:
 	std::vector<Player*> VectorPlayer;
+	std::vector<Pellet*> VectorPellet;
 
 	Vector2D<float> fMousePos;
 
@@ -59,9 +63,6 @@ public:
 	void OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode);
 	// Gets called automatically by 'EventHandler' when the user clicks the 'x' on the window
 	void OnExit();
-
-	//Gets the change in time.
-	void GetDeltaTime();
 
 	// The default constructor
 	GameLoop();

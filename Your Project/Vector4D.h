@@ -15,6 +15,11 @@ public:
 	
 	void Print() const;
 
+	const T GetX() const;
+	const T GetY() const;
+	const T GetZ() const;
+	const T GetT() const;
+
 	Vector4D(const T ac_X, const T ac_Y, const T ac_Z, const T ac_T);
 	Vector4D(const unsigned int ac_uiHex);
 	Vector4D();
@@ -38,6 +43,27 @@ template <typename T>
 void Vector4D<T>::Print() const
 {
 	std::cout << x << ", " << y << ", " << z << ", " << t << " " << std::endl;
+}
+
+template<typename T>
+const T Vector4D<T>::GetX() const
+{
+	return x;
+}
+template<typename T>
+const T Vector4D<T>::GetY() const
+{
+	return y;
+}
+template<typename T>
+const T Vector4D<T>::GetZ() const
+{
+	return z;
+}
+template<typename T>
+const T Vector4D<T>::GetT() const
+{
+	return t;
 }
 
 template <typename T>

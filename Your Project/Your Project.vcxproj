@@ -129,6 +129,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Maths.h" />
+    <ClInclude Include="Pellet.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Vector2D.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="Pellet.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Time.cpp" />
