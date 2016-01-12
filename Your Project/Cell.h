@@ -7,14 +7,22 @@
 #ifndef _CELL_H_
 #define _CELL_H_
 
+#include "BoundingCircle.h"
+
 class Cell
 {
-private: 
+protected: 
 	Vector2D<float> Pos;
 	float Radius;
 	BoundingCircle* BC;
 public:
+	Vector2D<float> GetPos();
+	float GetRadius();
+	void SetPos();
+	void SetRadius();
+
 	Cell();
+	Cell(Vector2D<float>, float);
 	~Cell();
 };
 
