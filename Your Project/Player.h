@@ -7,6 +7,7 @@
 #define _PLAYER_H_
 
 #include "Cell.h"
+#include "Time.h"
 
 class Player : public Cell
 {
