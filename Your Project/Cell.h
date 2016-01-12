@@ -10,7 +10,6 @@
 #include "Collision.h"
 #include "Vector4D.h"
 #include "System.h"
-
 #include <stdlib.h>
 
 class Cell
