@@ -1,6 +1,7 @@
 #include "GameLoop.h"
 
 const unsigned int MAX_PELLETS = 25;
+const int MAX_LINES = 50;
 
 void GameLoop::Loop()
 {
@@ -62,7 +63,16 @@ void GameLoop::Draw()
 	{
 		System::Point2D<float> fRelativePos = { VectorPlayer[0]->GetSystemPoint().X - 800, VectorPlayer[0]->GetSystemPoint().Y - 450 };
 
+		for (int i = 0; i <= MAX_LINES; i++)
+		{
+			System::Point2D<int> Start = { i * 1600 / MAX_LINES, 0 };
+			System::Point2D<int> End = { i * 1600 / MAX_LINES, 900 };
+			Graphics::DrawLine<int>(Start - fRelativePos, End - fRelativePos, { 255, 255, 255, 150 });
 
+			Start = { 0, i * 900 / MAX_LINES };
+			End = { 1600, i * 900 / MAX_LINES };
+			Graphics::DrawLine<int>(Start - fRelativePos, End - fRelativePos, { 255, 255, 255, 150 });
+		}
 		for (int i = 0; i < VectorPellet.size(); i++)
 		{
 			Graphics::DrawCircle(VectorPellet[i]->GetSystemPoint() - fRelativePos, VectorPellet[i]->GetRadius(), 25.0f, VectorPellet[i]->GetSystemColor());
@@ -124,7 +134,6 @@ GameLoop::GameLoop()
 		Pellet * NewPellet = new Pellet();
 		VectorPellet.push_back(NewPellet);
 	}
-	Grid = Graphics::LoadSurface<float>("");
 
 	m_bRunning = true;
 }
