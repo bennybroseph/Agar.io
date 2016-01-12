@@ -32,9 +32,11 @@ void GameLoop::Loop()
 
 void GameLoop::Update()
 {
+	Time::Update();
+
 	for (int i = 0; i < VectorPlayer.size(); i++)
 	{
-		VectorPlayer[i]->Update();
+		VectorPlayer[i]->Update(fMousePos);
 	}
 }
 void GameLoop::LateUpdate()
@@ -44,9 +46,7 @@ void GameLoop::LateUpdate()
 
 void GameLoop::GetDeltaTime()
 {
-	int now = SDL_GetTicks();
-	DeltaTime = ((float)(now - last)) / 1000;
-	last = now;
+	
 }
 
 void GameLoop::Draw()
@@ -66,9 +66,10 @@ void GameLoop::OnMouseMove(const int ac_iMouseX, const int ac_iMouseY, const int
 	{
 		if ((VectorPlayer[i]->GetPos().GetX() != ac_iMouseX) && (VectorPlayer[i]->GetPos().GetY() != ac_iMouseY))
 		{
-			VectorPlayer[i]->SetPos({ (ac_iMouseX - 800) * DeltaTime, (ac_iMouseY - 450) * DeltaTime });
+			fMousePos.SetX(ac_iMouseX - 800);
+			fMousePos.SetY(ac_iMouseY - 400);
 		}
-	}	
+	}
 }
 
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
@@ -96,6 +97,9 @@ void GameLoop::OnExit()
 
 GameLoop::GameLoop()
 {
+	Time::Init();
+	Collision::Init();
+
 	Player * NewPlayer = new Player();
 
 	VectorPlayer.push_back(NewPlayer);
@@ -104,5 +108,6 @@ GameLoop::GameLoop()
 }
 GameLoop::~GameLoop()
 {
-
+	Time::Quit();
+	Collision::Quit();
 }

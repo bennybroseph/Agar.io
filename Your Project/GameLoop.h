@@ -9,10 +9,12 @@
 #ifndef _GAMELOOP_H_
 #define _GAMELOOP_H_
 
+#include "Time.h"
 #include "Graphics.h"
 #include "EventHandler.h"
 #include <iostream>
 #include "Player.h"
+#include "Collision.h"
 
 #include <vector>
 
@@ -28,6 +30,8 @@ class GameLoop : private EventHandler
 {
 private:
 	std::vector<Player*> VectorPlayer;
+
+	Vector2D<float> fMousePos;
 
 	bool m_bRunning; // If this is true, the game loop will continue to run
 
