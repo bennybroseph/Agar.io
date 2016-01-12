@@ -86,12 +86,12 @@ const T Vector2D<T>::GetY() const
 template <typename T>
 void Vector2D<T>::SetX(const T a_X)
 {
-	x = a_X
+	x = a_X;
 }
 template <typename T>
 void Vector2D<T>::SetY(const T a_Y)
 {
-	y = a_Y
+	y = a_Y;
 }
 
 template <typename T>

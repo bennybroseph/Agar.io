@@ -66,8 +66,8 @@ void GameLoop::OnMouseMove(const int ac_iMouseX, const int ac_iMouseY, const int
 	{
 		if ((VectorPlayer[i]->GetPos().GetX() != ac_iMouseX) && (VectorPlayer[i]->GetPos().GetY() != ac_iMouseY))
 		{
-			fMousePos.SetX(ac_iMouseX - 800);
-			fMousePos.SetY(ac_iMouseY - 400);
+			fMousePos.SetX(ac_iMouseX);
+			fMousePos.SetY(ac_iMouseY);
 		}
 	}
 }
