@@ -15,11 +15,13 @@ protected:
 	Vector2D<float> Pos;
 	float Radius;
 	BoundingCircle* BC;
+	bool ShouldDelete;
 public:
 	Vector2D<float> GetPos();
 	float GetRadius();
-	void SetPos();
-	void SetRadius();
+	void SetPos(Vector2D<float>);
+	void SetRadius(float);
+	void Update();
 
 	Cell();
 	Cell(Vector2D<float>, float);
